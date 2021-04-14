@@ -5,7 +5,7 @@ import sys
 import xml.etree.ElementTree as ET
 
 
-def sendTemplate(recipientAddress, substitutionData, templateDict):
+def sendTemplate(apiKey, recipientAddress, substitutionData, templateDict):
     # Construct Email Components
     campaignId = templateDict["campaignId"]
     templateId = templateDict["templateId"]
@@ -78,6 +78,7 @@ def manageArgs(argv):
     else:
         print("incorrect number of arguments: " + instructions)
 
+
 # Initialize variables
 argArray = manageArgs(sys.argv[1:])  # pull parameters
 apiKey = argArray[0]
@@ -96,4 +97,4 @@ for recipientRecord in jsonFile:
         "campaignId": campaignId,
         "templateId": templateId
     }
-    sendTemplate(recipientAddress, substitutionData, templateDict)  # send email (stored template)
+    sendTemplate(apiKey, recipientAddress, substitutionData, templateDict)  # send email (stored template)
