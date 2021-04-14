@@ -1,7 +1,7 @@
+import argparse
+
 import requests
 import json
-import getopt
-import sys
 import xml.etree.ElementTree as ET
 
 
@@ -51,41 +51,20 @@ def readXMLData(sourceFile, recordTag):
     return json.dumps(completeData)
 
 
-def manageArgs(argv):
-    opts, args = getopt.getopt(argv, "hk:s:t:c:")
-
-    instructions = "xmlinjector.py -k <api_key> -s <source_file_path> -t <templateId> -c <campaignId>"
-    argsArray = []
-
-    for opt, arg in opts:
-        if opt == '-h':
-            sys.exit()
-        elif opt == "-k":
-            apiKey = arg
-            argsArray.append(apiKey)
-        elif opt == "-s":
-            sourceFile = arg
-            argsArray.append(sourceFile)
-        elif opt == "-t":
-            templateId = arg
-            argsArray.append(templateId)
-        elif opt == "-c":
-            campaignId = arg
-            argsArray.append(campaignId)
-
-    if len(argsArray) == 4:
-        return argsArray
-    else:
-        print("incorrect number of arguments: " + instructions)
-
-
 if __name__ == "__main__":
-    # Initialize variables
-    argArray = manageArgs(sys.argv[1:])  # pull parameters
-    apiKey = argArray[0]
-    sourceFile = argArray[1]
-    templateId = argArray[2]
-    campaignId = argArray[3]
+    # Import Arguments - Command Line
+    parser = argparse.ArgumentParser(description="Send a message through SparkPost using XML formatted substitution data")
+    parser.add_argument("apiKey", type=str, help="SparkPost API Key")
+    parser.add_argument("sourceFile", type=str, help="Path to source XML file")
+    parser.add_argument("templateId", type=str, help="Template_Id of SparkPost Stored Template")
+    parser.add_argument("campaignId", type=str, help="Campaign_ID for transmission")
+
+    args = parser.parse_args()
+
+    apiKey = args.apiKey
+    sourceFile = args.sourceFile
+    templateId = args.templateId
+    campaignId = args.campaignId
     recordTag = "record"  # tag within XML file that will be used to identify a specific recipient record
     emailAddrTag = "emailAddr"  # tag within XML record to identify email address of recipient
     recpSubData = readXMLData(sourceFile, recordTag)  # Load XML Data from file
