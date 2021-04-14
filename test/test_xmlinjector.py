@@ -3,7 +3,7 @@ import xmlinjector
 
 
 @responses.activate
-def sendMessage():
+def test_sendMessage():
     responses.add(
         responses.POST,
         'https://api.sparkpost.com/api/v1/transmissions',
