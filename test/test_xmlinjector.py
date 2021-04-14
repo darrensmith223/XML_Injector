@@ -3,8 +3,8 @@ import xmlinjector
 
 
 def readXMLFile():
-    sourceFile = "path_to_test_XML"
-    recordTag = "record"  # tag within XML file that will be used to identify a specific recipient record
+    sourceFile = "testSubstitutionData.xml"
+    recordTag = "record"
     substitutionData = xmlinjector.readXMLData(sourceFile, recordTag)
 
 
