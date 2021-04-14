@@ -3,7 +3,7 @@ import xmlinjector
 
 
 def test_readXMLFile():
-    sourceFile = "resources/testSubstitutionData.xml"
+    sourceFile = "resources/estSubstitutionData.xml"
     recordTag = "record"
     substitutionData = xmlinjector.readXMLData(sourceFile, recordTag)
 
