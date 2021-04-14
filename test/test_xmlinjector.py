@@ -1,5 +1,4 @@
 import responses
-import xmlinjector
 
 
 @responses.activate
