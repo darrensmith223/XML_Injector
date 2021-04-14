@@ -79,22 +79,23 @@ def manageArgs(argv):
         print("incorrect number of arguments: " + instructions)
 
 
-# Initialize variables
-argArray = manageArgs(sys.argv[1:])  # pull parameters
-apiKey = argArray[0]
-sourceFile = argArray[1]
-templateId = argArray[2]
-campaignId = argArray[3]
-recordTag = "record"  # tag within XML file that will be used to identify a specific recipient record
-emailAddrTag = "emailAddr"  # tag within XML record to identify email address of recipient
-recpSubData = readXMLData(sourceFile, recordTag)  # Load XML Data from file
-jsonFile = json.loads(recpSubData)
+if __name__ == "__main__":
+    # Initialize variables
+    argArray = manageArgs(sys.argv[1:])  # pull parameters
+    apiKey = argArray[0]
+    sourceFile = argArray[1]
+    templateId = argArray[2]
+    campaignId = argArray[3]
+    recordTag = "record"  # tag within XML file that will be used to identify a specific recipient record
+    emailAddrTag = "emailAddr"  # tag within XML record to identify email address of recipient
+    recpSubData = readXMLData(sourceFile, recordTag)  # Load XML Data from file
+    jsonFile = json.loads(recpSubData)
 
-for recipientRecord in jsonFile:
-    recipientAddress = recipientRecord[emailAddrTag]
-    substitutionData = recipientRecord
-    templateDict = {
-        "campaignId": campaignId,
-        "templateId": templateId
-    }
-    sendTemplate(apiKey, recipientAddress, substitutionData, templateDict)  # send email (stored template)
+    for recipientRecord in jsonFile:
+        recipientAddress = recipientRecord[emailAddrTag]
+        substitutionData = recipientRecord
+        templateDict = {
+            "campaignId": campaignId,
+            "templateId": templateId
+        }
+        sendTemplate(apiKey, recipientAddress, substitutionData, templateDict)  # send email (stored template)
