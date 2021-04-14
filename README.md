@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/darrensmith223/XML_Injector.svg?branch=master)](https://travis-ci.com/darrensmith223/XML_Injector)
+
 # XML_Injector
 Python-based tool designed as a simple command line tool that will send messages using stored templates through SparkPost, leveraging an XML file to pass contact information and substitution data.
 
