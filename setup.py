@@ -9,6 +9,6 @@ setup(
     packages=find_packages(),
     url='https://github.com/darrensmith223/XML_Injector',
     license='Apache 2.0',
-    description='Configure Intermediary DKIM Domain with SparkPost',
+    description='Send emails with SparkPost using XML formatted substitution data',
     install_requires=['requests>=2.20.1']
 )
