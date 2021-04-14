@@ -2,12 +2,6 @@ import responses
 import xmlinjector
 
 
-def readXMLFile():
-    sourceFile = "testSubstitutionData.xml"
-    recordTag = "record"
-    substitutionData = xmlinjector.readXMLData(sourceFile, recordTag)
-
-
 @responses.activate
 def sendMessage():
     responses.add(
