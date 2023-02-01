@@ -40,9 +40,9 @@ Note:  The xml tag for substitution variables must be the same as the substituti
 ## Altering the Record and Email Address Tags
 The tool is designed with certain assumptions having been made regarding the format of a contact record within the XML file.  A few of these assumptions are as follows:
 
-*Each contact record is separated using a uniform record tag.
-*Each contact record includes an email address
-*Each email address is stored within a contact record using a uniform field name
+* Each contact record is separated using a uniform record tag.
+* Each contact record includes an email address
+* Each email address is stored within a contact record using a uniform field name
 
 The tool expects that each contact record is separated using a uniform tag, and each record contains the email address stored with a uniform tag.  By default, the tool uses the tag "record" to identify a unique contact record, and the tag "emailAddr" to identify the email address; however, there may be cases where a different tag name should be used to identify a unique contact record or email address.
 
